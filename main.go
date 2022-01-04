@@ -1,52 +1,47 @@
 package main
 
-import (
-	"log"
-)
+import "fmt"
+
+type Animal interface {
+	Says() string
+	NumberOfLegs() int
+}
+
+type Dog struct {
+	Name  string
+	Breed string
+}
+
+type Gorilla struct {
+	Name          string
+	Color         string
+	NumberOfTeeth int
+}
 
 func main() {
-	var mySlice []string
+	dog := Dog{"Samson", "German Shephered"}
+	PrintInfo(&dog)
 
-	mySlice = append(mySlice, "Kemal")
-	mySlice = append(mySlice, "Melih")
-	mySlice = append(mySlice, "Ahmet")
+	gorilla := Gorilla{"Mazzi", "Gray", 36}
+	PrintInfo(&gorilla)
+}
 
-	log.Println(mySlice)
+func PrintInfo(a Animal) {
+	fmt.Println("This animal says", a.Says(), "and has", a.NumberOfLegs(), "legs")
+}
 
-	numbers := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-	log.Println(numbers)
-	log.Println(numbers[4:7])
+func (d *Dog) Says() string {
+	return "Woof"
+}
 
-	animals := []string{"dog", "fish", "horse", "cow", "cat", "duck"}
+func (d *Dog) NumberOfLegs() int {
+	return 4
+}
 
-	for _, animal := range animals {
-		log.Println(animal)
-	}
+func (d *Gorilla) Says() string {
+	return "Uggghhhh"
+}
 
-	soccerTeams := make(map[string]string)
-
-	soccerTeams["team1"] = "Galatasaray"
-	soccerTeams["team2"] = "Fenerbahçe"
-	soccerTeams["team3"] = "Beşiktaş"
-
-	for teamName, item := range soccerTeams {
-		log.Println(teamName, item)
-	}
-
-	type PersonelInfo struct {
-		FirstName string
-		LastName  string
-		Age       int
-		Email     string
-	}
-
-	var users []PersonelInfo
-	users = append(users, PersonelInfo{"Elif", "Aksu", 22, "elifaksu@gmail.com"})
-	users = append(users, PersonelInfo{"Kemal", "Ekin", 22, "kemalekin@gmail.com"})
-	users = append(users, PersonelInfo{"Nedim", "Gazi", 22, "nedimgazi@gmail.com"})
-	users = append(users, PersonelInfo{"Börte", "Kahraman", 22, "bortekahraman@gmail.com"})
-
-	for _, item := range users {
-		log.Println(item.FirstName, " ", item.LastName, " ", item.Age, " ", item.Email)
-	}
+func (d *Gorilla) NumberOfLegs() int {
+	return 2
 }
