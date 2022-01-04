@@ -1,27 +1,27 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "log"
 
-type User struct {
-	FirstName   string
-	LastName    string
-	PhoneNumber string
-	Age         int
-	BirthDate   time.Time
+type myStruct struct {
+	FirstName string
+}
+
+func (m *myStruct) printFirstName() string {
+	return m.FirstName
 }
 
 func main() {
-	user := User{
-		FirstName: "Ata",
-		LastName:  "Teko",
-	}
-	fmt.Println(user.FirstName + " " + user.LastName)
-}
+	var myVar myStruct
+	myVar.FirstName = "John"
 
-func saySomething(s string) (string, string) {
-	fmt.Println("Function s: ", s)
-	return s, "World"
+	myVar2 := myStruct{
+		FirstName: "Amy",
+	}
+
+	myVar3 := myStruct{
+		FirstName: "Atakan",
+	}
+	log.Println("myVar is set to:", myVar.FirstName)
+	log.Println("myVar2 is set to:", myVar2.FirstName)
+	log.Println("myVar3 is set to:", myVar3.printFirstName())
 }
