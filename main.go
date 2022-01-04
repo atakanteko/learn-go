@@ -1,34 +1,20 @@
 package main
 
-import "log"
-
-type User struct {
-	FirstName string
-	LastName  string
-}
+import (
+	"log"
+)
 
 func main() {
-	myVar := make(map[string]string)
+	var mySlice []string
 
-	myVar["dogName"] = "Duman"
-	myVar["myFavoriteMovie"] = "Harry Potter"
+	mySlice = append(mySlice, "Kemal")
+	mySlice = append(mySlice, "Melih")
+	mySlice = append(mySlice, "Ahmet")
 
-	log.Println(myVar["dogName"])
-	log.Println(myVar["myFavoriteMovie"])
+	log.Println(mySlice)
 
-	myAnotherVar := make(map[string]int)
+	numbers := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 
-	myAnotherVar["smallestPrimeNumber"] = 2
-
-	log.Println(myAnotherVar["smallestPrimeNumber"])
-
-	myStructMap := make(map[string]User)
-
-	personelInfo := User{
-		FirstName: "Atakan",
-		LastName:  "Tekoğlu",
-	}
-	myStructMap["personelInfo"] = personelInfo
-
-	log.Println(myStructMap["personelInfo"].FirstName + " " + myStructMap["personelInfo"].LastName)
+	log.Println(numbers)
+	log.Println(numbers[4:7])
 }
