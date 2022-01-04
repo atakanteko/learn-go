@@ -2,26 +2,33 @@ package main
 
 import "log"
 
-type myStruct struct {
+type User struct {
 	FirstName string
-}
-
-func (m *myStruct) printFirstName() string {
-	return m.FirstName
+	LastName  string
 }
 
 func main() {
-	var myVar myStruct
-	myVar.FirstName = "John"
+	myVar := make(map[string]string)
 
-	myVar2 := myStruct{
-		FirstName: "Amy",
-	}
+	myVar["dogName"] = "Duman"
+	myVar["myFavoriteMovie"] = "Harry Potter"
 
-	myVar3 := myStruct{
+	log.Println(myVar["dogName"])
+	log.Println(myVar["myFavoriteMovie"])
+
+	myAnotherVar := make(map[string]int)
+
+	myAnotherVar["smallestPrimeNumber"] = 2
+
+	log.Println(myAnotherVar["smallestPrimeNumber"])
+
+	myStructMap := make(map[string]User)
+
+	personelInfo := User{
 		FirstName: "Atakan",
+		LastName:  "Tekoğlu",
 	}
-	log.Println("myVar is set to:", myVar.FirstName)
-	log.Println("myVar2 is set to:", myVar2.FirstName)
-	log.Println("myVar3 is set to:", myVar3.printFirstName())
+	myStructMap["personelInfo"] = personelInfo
+
+	log.Println(myStructMap["personelInfo"].FirstName + " " + myStructMap["personelInfo"].LastName)
 }
