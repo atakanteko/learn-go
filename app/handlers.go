@@ -19,21 +19,8 @@ type CustomerHandlers struct {
 }
 
 func (ch *CustomerHandlers) GetAllCustomers(w http.ResponseWriter, r *http.Request) {
-	var customers []Customer
 
-	customer1 := Customer{
-		Name:    "Kemal",
-		City:    "Istanbul",
-		Zipcode: "34683",
-	}
-	customer2 := Customer{
-		Name:    "Elif",
-		City:    "Aksu",
-		Zipcode: "34544",
-	}
-
-	customers = append(customers, customer1)
-	customers = append(customers, customer2)
+	customers, _ := ch.service.GetAllCustomer()
 	w.Header().Add("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(customers)
 }
