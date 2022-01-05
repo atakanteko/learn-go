@@ -3,6 +3,7 @@ package app
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/atakanteko/learngo/service"
 	"github.com/gorilla/mux"
 	"net/http"
 )
@@ -13,7 +14,11 @@ type Customer struct {
 	Zipcode string `json:"zip_code"`
 }
 
-func GetAllCustomers(w http.ResponseWriter, r *http.Request) {
+type CustomerHandlers struct {
+	service service.CustomerService
+}
+
+func (ch *CustomerHandlers) GetAllCustomers(w http.ResponseWriter, r *http.Request) {
 	var customers []Customer
 
 	customer1 := Customer{
